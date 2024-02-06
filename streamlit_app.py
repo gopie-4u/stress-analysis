@@ -20,8 +20,52 @@ from word_embedding_vectorizer import WordEmbeddingVectorizer
 from gensim.models import Word2Vec
 import nltk
 import time
+
+################################################ Start:newly added###############################################
 import os
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+
+import logging.config
+
+
+# Assuming you have a dictionary with your logging configuration
+# This is just a placeholder, you should adjust it according to your needs
+logging_config = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'prediction': {
+            'format': '(service_name) (service_version) (api) (request_id) (request) (response) (asctime)',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'stress-analysis.log',
+            'formatter': 'prediction',  # Use the formatter defined above
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+# Configure logging
+logging.config.dictConfig(logging_config)
+
+################################################ End:newly added###############################################
+
+# Example usage of logging in Streamlit
+logging.info("This is an info message")
+logging.error("This is an error message")
+
+
+
 
 ################################################
 ##########      Global attributes     ##########
