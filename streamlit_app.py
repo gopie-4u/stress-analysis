@@ -20,6 +20,8 @@ from word_embedding_vectorizer import WordEmbeddingVectorizer
 from gensim.models import Word2Vec
 import nltk
 import time
+import os
+os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
 ################################################
 ##########      Global attributes     ##########
